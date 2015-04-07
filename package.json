@@ -1,0 +1,42 @@
+{
+  "name": "react-stuck",
+  "version": "1.0.0",
+  "description": "React component which loosely implements `position: sticky`",
+  "main": "lib/Stuck.js",
+  "scripts": {
+    "test": "mocha -r should -r test/util/test-helper.js --compilers jsx:test/util/compiler.js test/*.jsx",
+    "test-watch": "mocha -G -w -R min -r should -r test/util/test-helper.js --compilers jsx:test/util/compiler.js test/*.jsx",
+    "build": "jsx --no-cache-dir -x jsx ./src ./lib",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/areusjs/react-stuck.git"
+  },
+  "keywords": [
+    "react-component",
+    "stuck",
+    "sticky",
+    "position:sticky"
+  ],
+  "author": "nemtsov@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/areusjs/react-stuck/issues"
+  },
+  "peerDependencies": {
+    "react": ">=0.13.0"
+  },
+  "dependencies": {
+    "dom-helpers": "^1.2.4"
+  },
+  "devDependencies": {
+    "jsdom": "^3.1.2",
+    "mocha": "^2.2.3",
+    "proxyquire": "^1.4.0",
+    "react": "^0.13.1",
+    "react-tools": "^0.13.1",
+    "should": "^5.2.0",
+    "sinon": "^1.14.1"
+  }
+}
