@@ -3,6 +3,7 @@
 
 var React = require('react/addons'),
   PureRenderMixin = React.addons.PureRenderMixin,
+  throttle = require('lodash/function/throttle'),
   offset = require('dom-helpers/query/offset'),
   on = require('dom-helpers/events/on'),
   off = require('dom-helpers/events/off'),
@@ -30,12 +31,15 @@ module.exports = Stuck = React.createClass({
   },
 
   componentDidMount: function () {
+    this._throttledUpdateOffsets = this._getThrottledUpdateOffsets();
     on(window, 'scroll', this._updateClass);
+    on(window, 'scroll', this._throttledUpdateOffsets);
     this.componentWillReceiveProps(this.props);
   },
 
   componentWillUnmount: function () {
     off(window, 'scroll', this._updateClass);
+    off(window, 'scroll', this._throttledUpdateOffsets);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -53,6 +57,11 @@ module.exports = Stuck = React.createClass({
         </div>
       </div>
     );
+  },
+
+  _getThrottledUpdateOffsets: function () {
+    function update() { this._updateOffsets(this.props); }
+    return throttle(update.bind(this), 500);
   },
 
   _updateOffsets: function (nextProps) {
