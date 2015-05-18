@@ -1,4 +1,4 @@
-# React Stuck [![Build Status](https://secure.travis-ci.org/areusjs/react-stuck.png)](http://travis-ci.org/areusjs/react-stuck) [![NPM version](https://badge.fury.io/js/react-stuck.svg)](http://badge.fury.io/js/react-stuck)
+# React Stuck [![Build Status](https://secure.travis-ci.org/dowjones/react-stuck.png)](http://travis-ci.org/dowjones/react-stuck) [![NPM version](https://badge.fury.io/js/react-stuck.svg)](http://badge.fury.io/js/react-stuck)
 
 This is a react component that loosely implements the
 [position: sticky](https://developer.mozilla.org/en-US/docs/Web/CSS/position#Sticky_positioning).
