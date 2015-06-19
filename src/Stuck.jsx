@@ -19,7 +19,8 @@ module.exports = Stuck = React.createClass({
 
   getDefaultProps: function () {
     return {
-      top: 0
+      top: 0,
+      style: {}
     };
   },
 
@@ -49,7 +50,7 @@ module.exports = Stuck = React.createClass({
 
   render: function () {
     return (
-      <div className={this.props.className}>
+      <div className={this.props.className} style={this.props.style}>
         <div ref='stuck'
             style={this._getStyleByClass(this.state.className)}
             className={this.state.className}>
