@@ -1,7 +1,8 @@
 var stub = require('sinon').stub,
   proxyquire = require('proxyquire'),
-  React = require('react/addons'),
-  TestUtils = React.addons.TestUtils,
+  React = require('react'),
+  ReactDOM = require('react-dom'),
+  TestUtils = require('react-addons-test-utils'),
   Stuck;
 
 describe('Stuck', function () {
@@ -30,8 +31,8 @@ describe('Stuck', function () {
 
   it('add and clean-up scroll events', function () {
     var node = document.createElement('DIV');
-    React.render(stuckComponent, node);
-    React.unmountComponentAtNode(node);
+    ReactDOM.render(stuckComponent, node);
+    ReactDOM.unmountComponentAtNode(node);
     on.firstCall.args[2].should.equal(off.firstCall.args[2]);
   });
 
@@ -49,7 +50,7 @@ describe('Stuck', function () {
     window.pageYOffset = 95;
     cnt = TestUtils.renderIntoDocument(stuckComponent);
     stuck = TestUtils.findRenderedDOMComponentWithClass(cnt, 'stuck');
-    stuckNode = React.findDOMNode(stuck);
+    stuckNode = ReactDOM.findDOMNode(stuck);
 
     stuckNode.offsetHeight = 10;
     cnt.setProps({height: 99});
@@ -62,6 +63,6 @@ describe('Stuck', function () {
     window.pageYOffset = pageYOffset;
     cnt = TestUtils.renderIntoDocument(stuckComponent);
     stuck = TestUtils.findRenderedDOMComponentWithClass(cnt, cname);
-    React.findDOMNode(stuck).className.should.match(cname);
+    ReactDOM.findDOMNode(stuck).className.should.match(cname);
   }
 });
